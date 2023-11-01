@@ -1,5 +1,20 @@
-FROM wordpress:6-apache
+FROM wordpress:latest
 
-RUN apt-get update && apt-get install -y magic-wormhole
+ARG MYSQLPASSWORD
+ARG MYSQLHOST
+ARG MYSQLPORT
+ARG MYSQLDATABASE
+ARG MYSQLUSER
+ARG SIZE_LIMIT
+
+ENV WORDPRESS_DB_HOST=$MYSQLHOST:$MYSQLPORT
+ENV WORDPRESS_DB_NAME=$MYSQLDATABASE
+ENV WORDPRESS_DB_USER=$MYSQLUSER
+ENV WORDPRESS_DB_PASSWORD=$MYSQLPASSWORD
+ENV WORDPRESS_TABLE_PREFIX="RW_"
+
+RUN echo "ServerName 0.0.0.0" >> /etc/apache2/apache2.conf
+RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
+
 
 CMD ["apache2-foreground"]
