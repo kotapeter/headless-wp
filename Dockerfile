@@ -1,6 +1,6 @@
-FROM wordpress:php8.2-fpm-alpine
+FROM wordpress:php8.2-apache
 
 EXPOSE 80
 EXPOSE 443
 
-CMD ["php-fpm"]
+CMD ["apache2-foreground"]
