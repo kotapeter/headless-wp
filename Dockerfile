@@ -1,5 +1,3 @@
-FROM docker.io/bitnami/wordpress:6
+FROM wordpress:php8.2-fpm-alpine
 
-ENTRYPOINT ["/opt/bitnami/scripts/wordpress/entrypoint.sh"]
-
-CMD ["/opt/bitnami/scripts/apache/run.sh"]
+CMD ["php-fpm"]
