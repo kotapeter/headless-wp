@@ -1,4 +1,4 @@
-FROM wordpress:latest
+FROM wordpress:6-apache
 
 ARG MYSQLPASSWORD
 ARG MYSQLHOST
